@@ -1,6 +1,10 @@
 import React, {Fragment, useState} from "react";
 import { Link } from "react-router-dom";
 
+//toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Register = ({ setAuth }) => {
 
     const [inputs, setInputs] = useState ({
@@ -25,10 +29,18 @@ const Register = ({ setAuth }) => {
             body : JSON.stringify(body)
         })
         const parseRes = await response.json()
-        
+    if (parseRes.token) {
         localStorage.setItem('token', parseRes.token)
         setAuth(true)
-        }
+        toast.success("Registered Successfully!")
+    }
+    else {
+        setAuth(false)
+        toast.error(parseRes)
+        toast.error(parseRes.message)
+    }
+
+    }
         catch (err) {
             console.log(err.message)
         }
@@ -36,6 +48,7 @@ const Register = ({ setAuth }) => {
     return (
 
         <Fragment>
+        <ToastContainer />
         <h1 className="text-center my-5">Register</h1>
         <form onSubmit={onSubmitForm}>
             <input type="email" name="email" placeholder="Coupa's email" className="form-control my-3" value={email} onChange={e => onChange(e)}/>

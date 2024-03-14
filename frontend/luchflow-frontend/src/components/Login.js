@@ -1,6 +1,10 @@
 import React, {Fragment, useState} from "react";
 import { Link } from "react-router-dom";
 
+// toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = ({ setAuth }) => {
     
@@ -28,10 +32,11 @@ const Login = ({ setAuth }) => {
             if(parseRes.token){
                 localStorage.setItem('token', parseRes.token)
                 setAuth(true)
-                
+                toast.success("Logged in Successfully!")
             }else{
                 setAuth(false)
-                
+                toast.error(parseRes.message)
+                toast.error(parseRes)
             }
 
         }
@@ -42,6 +47,8 @@ const Login = ({ setAuth }) => {
 
     return (
         <Fragment>
+         <ToastContainer />
+
          <h1 className="text-center my-5" >Login</h1>
          <form onSubmit={onSubmitForm}>
             <input type="email" name="email" placeholder="Your Coupa's email" className="form-control my-3" value={email} onChange={e => onChange(e)}></input>

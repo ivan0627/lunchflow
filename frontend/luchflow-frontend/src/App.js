@@ -7,6 +7,9 @@ import Login from './components/Login';
 //style
 import './App.css';
 
+// toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -39,6 +42,7 @@ function App() {
 
   return (
     <Fragment>
+      <ToastContainer />
       <Router>
         <div className="container">
           <Routes>            
