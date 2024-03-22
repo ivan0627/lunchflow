@@ -4,6 +4,7 @@ const bycrypt = require('bcrypt');
 const jwtGenerator = require('../utils/jwtGenerator');
 const validInfo = require('../middleware/validInfo');
 const authorization = require('../middleware/authorization');
+const e = require('express');
 // register
 
 router.post("/register", validInfo, async(req, res) => {
@@ -87,5 +88,26 @@ router.get("/is-verified", authorization, async(req, res) => {
 
 })
 
-module.exports = router;
+router.post("/admin", authorization, async (req, res) => {
+    try {
+        const email = req.body.email;
+        
+        const user = await pool.query("SELECT * FROM users WHERE user_email = $1 and role = 'admin'", [email]);
+        console.log(user.rows)
 
+        if (user.rows.length === 0) {
+            console.log("User is not an admin");
+            return res.status(401).json({ message: "You are not an admin" });
+        }
+        
+        res.json({ message: "You are an admin" });
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+});
+
+
+
+module.exports = router;

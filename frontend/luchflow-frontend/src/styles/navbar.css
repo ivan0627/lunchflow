@@ -1,0 +1,41 @@
+
+.navbar{
+
+        min-width: 100vh;
+        margin : 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 100px;
+        background-color: #ffa700;
+        color: white;
+        
+   
+}
+
+.navbar a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 0 20px;
+    position: relative;
+}
+.navbar a:hover{
+    color: black;
+}
+
+.navbar button {
+    padding: 10px 15px;
+    background-color: white;
+    color: #ffa700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+ button:hover{
+    background-color: rgb(51, 48, 48);
+}

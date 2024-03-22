@@ -1,0 +1,97 @@
+
+.maincontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: none;
+    background-color: #f5f5f5;
+}
+
+h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    margin-bottom: 3%;
+    margin-top:3%;
+    text-align: center;
+}
+#menuDateInput{
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+#menuTitleInput {
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+}
+
+#ptitle, #pdate{
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.menucontainer {
+    max-width: 40%;
+    min-width: 40%;
+    min-height: 100vh;
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 5%;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menucontainer input{
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+}
+/* make menuTitleInput resizable*/
+#menuDescriptionInput {
+    width: 100%;
+    
+}
+  
+
+  
+#optionInput{
+    min-width: 100%;
+}
+.additionalinputs{
+    min-width: 100%;
+}
+
+
+.menuresults{
+    width: 60%;
+    margin: 2%;
+    max-height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 5%;
+}
+
+.menuresultseach{
+    margin: 2%;
+    max-height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1%;
+}

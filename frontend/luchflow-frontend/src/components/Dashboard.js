@@ -1,4 +1,5 @@
 import React, {Fragment, useState, useEffect} from "react";
+import '../styles/dashboard.css';
 
 const Dashboard = ({setAuth}) => {
     
@@ -31,10 +32,8 @@ const Dashboard = ({setAuth}) => {
 
     return (        
         <Fragment>
-        <h1>Dashboard</h1>
-        <h2>Welcome {name}</h2>
-        <button onClick={(e) => logout(e)}>Logout</button>
-
+            <h2>Welcome {name}</h2>
+            
         </Fragment>
     );
     };
