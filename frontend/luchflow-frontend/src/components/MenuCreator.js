@@ -162,7 +162,7 @@ const MenuCreator = () => {
           {showPopup && <PopupComment message="Please fill in all required fields." />}
         </div>
         <div className="menuresults">
-          <h2>Responses<h2/>
+          
           {menuDays.map((menuDay, index) => (
             <div key={index} className="menuresultseach">
               <p id="pdate">Date: {menuDay.date} {formatDate(menuDay.date)}</p>
