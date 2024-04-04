@@ -1,5 +1,6 @@
 import React, {Fragment, useState} from "react";
 import { Link } from "react-router-dom";
+import "../styles/register.css"
 
 //toastify
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,10 +11,11 @@ const Register = ({ setAuth }) => {
     const [inputs, setInputs] = useState ({
         email: "",
         password: "",
-        name: ""
+        name: "",
+        repeatPassword: "",
     })
 
-    const { email, password, name } = inputs;
+    const { email, password, name, repeatPassword } = inputs;
 
     const onChange = (e) =>{
         setInputs({...inputs, [e.target.name] : e.target.value})
@@ -21,6 +23,14 @@ const Register = ({ setAuth }) => {
 
     const onSubmitForm = async (e) =>{
         e.preventDefault()
+
+        //function to check if passwords match
+        if (password !== repeatPassword) {
+            toast.error("Passwords do not match");
+            return;
+        }
+      
+
         try{
             const body = {email, password, name}
             const response = await fetch ("http://localhost:5000/auth/register", {
@@ -45,22 +55,33 @@ const Register = ({ setAuth }) => {
             console.log(err.message)
         }
     }
+
     return (
 
         <Fragment>
         <ToastContainer />
+        <div className="registerContainer">
         <h1 className="text-center my-5">Register</h1>
-        <form onSubmit={onSubmitForm}>
+        <form onSubmit={onSubmitForm} className="registerForm">
             <input type="email" name="email" placeholder="Coupa's email" className="form-control my-3" value={email} onChange={e => onChange(e)}/>
             <input type="password" name="password" placeholder="password" className="form-control my-3" value={password} onChange={e => onChange(e)}/>
+            <input type="password" name="repeatPassword" value={repeatPassword}  placeholder="repeat the password" className="form-control my-3" onChange={e => onChange(e)}/>
             <input type="text" name="name" placeholder="Full name" className="form-control my-3" value={name} onChange={e => onChange(e)}/>
 
             <div className="d-grid gap-2">
-                <button className="btn btn-success btn-primary">Submit</button>
+                <button className="" >Submit</button>
             </div>
+
         
         </form>
-        <Link to="/login">Login</Link>
+        
+        <div className="loginButton">
+                <p>Already have an account? </p>
+                <br></br>
+            <Link to="/login" id="loginButton">Login</Link>
+            </div>
+        </div>
+      
         </Fragment>
     );
     };

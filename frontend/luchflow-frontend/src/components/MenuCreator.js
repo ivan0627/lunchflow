@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import moment from 'moment';
+import { ToastContainer, toast } from 'react-toastify';
 import "../styles/MenuCreator.css";
 
 const PopupComment = ({ message }) => {
@@ -84,17 +84,73 @@ const MenuCreator = () => {
     setShowPopup(false);
   };
   //date format
-
-  console.log(menuDate)
   const formatDate = (dateString) => {const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const date = new Date(dateString);
   const utcOffset = -5 * 60;
   date.setMinutes(date.getMinutes() - utcOffset);
     return date.toLocaleDateString('es-ES', options).toUpperCase();
+
+  };
+  //delete menu day
+  const deleteMenuDay = (index) => {
+    return () => {
+      const newMenuDays = [...menuDays];
+      newMenuDays.splice(index, 1);
+      setMenuDays(newMenuDays);
+    }
   };
 
+  //Clear all menu days
+  const clearMenuDays = () => {
+    setMenuDays([]);
+  };
+  
+// send the menu to the backend
+const saveMenu = async (e) => {
+  e.preventDefault();
+
+  try {
+    // Iterate through each menuDay and send its data to the backend
+    for (let i = 0; i < menuDays.length; i++) {
+      const requestData = {
+        menu_date: menuDays[i].date,
+        menu_title: menuDays[i].title,
+        menu_description: menuDays[i].description,
+        menu_drink: menuDays[i].drink,
+        user_email: localStorage.email
+      };
+
+      // Ensure options are populated and include only selected quantity
+      const optionsForMenuDay = menuDays[i].options.slice(0, quantity);
+
+      // Add options dynamically to the requestData object
+      for (let j = 0; j < optionsForMenuDay.length; j++) {
+        requestData[`option${j + 1}`] = optionsForMenuDay[j];
+      }
+
+      const response = await fetch("http://localhost:5000/auth/menu-creator", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.token,
+        },
+        body: JSON.stringify(requestData), // Send the requestData object in the body
+      });
+
+      const menu = await response.json();
+      console.log(menu);
+      toast.success("Menu created successfully");
+      clearMenuDays();
+    }
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+
+
   return (
-    <div>
+    <div className="outsidecontainer">
       <h1>Menu Creator</h1>
       <div className="maincontainer">
         <div className="menucontainer">
@@ -156,28 +212,40 @@ const MenuCreator = () => {
               <br />
             </div>
           ))}
-
+          <div className="menucontainerbuttons">
           <button onClick={addMenuDay}>Add Menu</button>
           <button onClick={repeatOptions}>Repeat previos options for this day</button>
+            
+          </div>
           {showPopup && <PopupComment message="Please fill in all required fields." />}
+           
         </div>
-        <div className="menuresults">
-          
+        <form className="menuresults" onSubmit={saveMenu}>
+          <h3>Your responses:</h3>
           {menuDays.map((menuDay, index) => (
             <div key={index} className="menuresultseach">
               <p id="pdate">Date: {menuDay.date} {formatDate(menuDay.date)}</p>
               <p id="ptitle">Title: {menuDay.title}</p>
-              <p>Description: {menuDay.description}</p>
-              <p>Drink: {menuDay.drink}</p>
-              <p>Options:</p>
-              <ul>
+              <p><strong>Description:</strong> {menuDay.description}</p>
+              <p><strong>Drink:</strong> {menuDay.drink}</p>
+              <p><strong>Options:</strong></p>
+              <ul id="optionsList">
                 {menuDay.options.map((option, optionIndex) => (
                   <li key={optionIndex}>{option}</li>
                 ))}
               </ul>
+               <button onClick={deleteMenuDay(index)} type="button" id="deleteMenuButton">Delete</button>
             </div>
             ))}
-        </div>
+            
+            <div>
+              {menuDays.length > 0 && (
+                <div className="savemenucontainer">
+                  <button id='savemenu' type='submit' >Save Menu</button>
+                </div>
+              )}
+            </div>
+        </form>
       </div>
     </div>
   );

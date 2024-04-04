@@ -1,5 +1,5 @@
 
-.loginContainer{
+.registerContainer{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -9,7 +9,7 @@
 }
 
 
-.loginForm{
+.registerForm{
     min-width: 60%;
     padding: 0 20%;
     margin-bottom: 2%;
@@ -27,37 +27,17 @@
     flex-wrap: wrap;
     justify-content: center;
 }
-.loginContainer h1{
+.registerContainer h1{
     width: 100%;
     font-size: 50px;
     font-weight: bold;
     color: #5a5a5a;
-    margin-top: 5%;
+    margin-top: 7%;
     margin-bottom: 1%;
     text-align: center;
 
 }
-
-.logoLoginContainer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    height: 7vh;
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-
-.logoLogin{
-    max-width: 15%;
-}
-.logoLogin img{
-    max-width: 100%;
-    height: 100%;
-}
-
-.loginForm input{
+.registerForm input{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -68,7 +48,7 @@
 
 }
 
-.loginForm button{
+.registerForm button{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -82,10 +62,10 @@
     margin-top: 10px;
     justify-content: center;
 }
-.loginForm button:hover{
+.registerForm button:hover{
     background-color: #ff8c00;
 }
-.registerButton
+.loginButton
 { 
     display: flex;
     flex-wrap: wrap;
@@ -100,13 +80,13 @@
     margin-top: 10px;
     justify-content: center;
 }
-.registerButton p{
+.loginButton p{
     min-width: 100px;
 }
 
-#registerButton{
+#loginButton{
     min-width: 100%;
-    margin-bottom: 11%;
+    margin-bottom: 15%;
     text-align: center;
     
 }

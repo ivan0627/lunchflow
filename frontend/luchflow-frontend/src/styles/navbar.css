@@ -24,6 +24,16 @@
     color: black;
 }
 
+.logo{
+    max-width: 5%;
+    display: flex;
+align-items: center;
+}
+.logo img{
+    max-width: 100%;
+    height: 100%;
+}
+
 .navbar button {
     padding: 10px 15px;
     background-color: white;
@@ -38,4 +48,22 @@
 }
  button:hover{
     background-color: rgb(51, 48, 48);
+}
+
+@media screen and (max-width: 827px){
+    .navbar{
+        flex-direction: column;
+        padding: 20px 0;
+    }
+    .navbar a{
+        margin: 10px 0;
+    }
+    .logo{
+        justify-content: center;
+        max-height: 5vh;
+    }
+    .logo img{
+        display: none;
+    }
+    
 }

@@ -6,6 +6,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import MenuCreator from './components/MenuCreator';
+import History from './components/History';
 
 //style
 import './App.css';
@@ -112,11 +113,12 @@ function App() {
     <Fragment>
       <ToastContainer />
       <Router>
-        <div className="container">
+        <div className="Appcontainer">
           {isAuthenticated && <Navbar setAuth={setAuth} isAdmin={isAdmin} />}
           
           <Routes>
             <Route path="/dashboard" element={isAuthenticated ? (<Dashboard setAuth={setAuth} />) : (<Navigate to="/login" />)} />
+            <Route path="/history" element={isAuthenticated ? (<History setAuth={setAuth} />) : (<Navigate to="/login" />)} />
             <Route path="/register" element={!isAuthenticated ? (<Register setAuth={setAuth} />) : (<Navigate to="/login" />)} />
             <Route path="/login" element={!isAuthenticated ? (<Login setAuth={setAuth} setAdmin={setAdmin} />) : (<Navigate to="/dashboard" />)} />
             <Route path="/menu-creator" element={isAdmin && isAuthenticated ? (<MenuCreator />) : <Navigate to="/dashboard" />} />
