@@ -17,7 +17,7 @@ CMD ["nodemon", "index.js"]
 FROM node:14 AS frontend
 
 # Establece el directorio de trabajo para el frontend
-WORKDIR /frontend
+WORKDIR /frontend/luchflow-frontend
 
 # Copia los archivos del frontend desde la carpeta frontend de tu proyecto
 COPY frontend/ .
