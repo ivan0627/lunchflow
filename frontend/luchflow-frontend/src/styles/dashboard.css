@@ -86,3 +86,13 @@ h2{
     transition: all 0.3s ease;
     font-size: 20px;
 }
+#radio{
+    
+  background-color: #fff;
+  margin: 0;
+  accent-color: #95650c;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid rgb(0, 0, 0);
+  border-radius: 50%;
+}

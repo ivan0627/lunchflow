@@ -150,8 +150,8 @@ router.get("/menus", authorization, async (req, res) => {
 
 router.post ("/responses", authorization, async (req, res) => {
     try {
-        const { response_id, user_email, creation_date, menu_date, menu_title, menu_description, menu_drink, menu_id, menu_option, menu_note } = req.body;
-        const newResponse = await pool.query("INSERT INTO responses (response_id, user_email, creation_date, menu_date, menu_title, menu_description, menu_drink, menu_id, menu_option, menu_note) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *", [response_id, user_email, creation_date, menu_date, menu_title, menu_description, menu_drink, menu_id, menu_option, menu_note]);
+        const { user_email, menu_date, menu_title, menu_description, menu_drink, menu_id, menu_option, menu_note } = req.body;
+        const newResponse = await pool.query("INSERT INTO responses ( user_email, menu_date, menu_title, menu_description, menu_drink, menu_id, menu_option, menu_note) VALUES ($1, $2, $3, $4, $5, $6, $7, $8 ) RETURNING *", [ user_email, creation_date, menu_date, menu_title, menu_description, menu_drink, menu_id, menu_option, menu_note]);
         res.json(newResponse.rows);
     } catch (err) {
         console.error(err.message);
