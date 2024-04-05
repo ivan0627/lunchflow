@@ -7,8 +7,8 @@
 # Comandos de construcción y despliegue del backend
 [build]
   backend = "npm install --prefix backend && npm run build --prefix backend"
-  dev = "nodemon index.js"
-  dist = "npm start --prefix backend"
+  dev = "nodemon index.js"  # Este comando es para desarrollo
+  dist = "node index.js"     # Este comando es para producción
 
 # Comandos de construcción y despliegue del frontend
 [frontend]
