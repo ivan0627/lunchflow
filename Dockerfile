@@ -20,7 +20,7 @@ FROM node:14 AS frontend
 WORKDIR /app/frontend/luchflow-frontend
 
 # Copia los archivos del frontend desde la carpeta frontend de tu proyecto
-COPY lunchflow/frontend/luchflow-frontend/ .
+COPY frontend/luchflow-frontend/ .
 
 # Instala las dependencias del frontend
 RUN npm install
