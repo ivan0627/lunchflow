@@ -1,8 +1,4 @@
-# railway.toml
 
-# Configuración del backend
-[backend]
-  port = 5000 # Puerto en el que se ejecutará el backend
 
 # Comandos de construcción y despliegue del backend
 [build]

@@ -1,8 +1,11 @@
 CREATE DATABASE lunchflow;
 
 
+--create extension
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 --set extension
-CREATE TABLE users (user_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(), user_name VARCHAR(255) NOT NULL,  user_email VARCHAR(255) NOT NULL,user_password VARCHAR(255) NOT NULL, role varchar(255) DEFAULT 'employee' );
+CREATE TABLE users (user_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(), user_name VARCHAR(255) NOT NULL,  user_email VARCHAR(255) NOT NULL,user_password VARCHAR(255) NOT NULL, role varchar(255) DEFAULT 'employee' );
 
 ---insert users
 
@@ -32,7 +35,7 @@ menu_drink varchar(255) not null,
 	option_8 varchar(50),
 	option_9 varchar(50),
 	option_10 varchar(50)
-)
+);
 
 -- insert menu function and trigger
 
@@ -74,7 +77,7 @@ create table responses (
 	menu_id varchar(255) not null,
 	menu_option varchar(255) not null,
 	menu_note varchar(500) not null
-)
+);
 
 
 CREATE OR REPLACE FUNCTION populate_user_fields_responses()
