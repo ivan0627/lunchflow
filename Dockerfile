@@ -2,7 +2,7 @@
 FROM node:14 AS backend
 
 # Establece el directorio de trabajo para el backend
-WORKDIR /backend
+WORKDIR /app/backend
 
 # Copia los archivos del backend desde la carpeta backend de tu proyecto
 COPY backend/ .
@@ -17,10 +17,10 @@ CMD ["nodemon", "index.js"]
 FROM node:14 AS frontend
 
 # Establece el directorio de trabajo para el frontend
-WORKDIR /frontend/luchflow-frontend
+WORKDIR /app/frontend/luchflow-frontend
 
 # Copia los archivos del frontend desde la carpeta frontend de tu proyecto
-COPY frontend/ .
+COPY frontend/luchflow-frontend/ .
 
 # Instala las dependencias del frontend
 RUN npm install
