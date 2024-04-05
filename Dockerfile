@@ -2,7 +2,7 @@
 FROM node:14 AS backend
 
 # Establece el directorio de trabajo para el backend
-WORKDIR /app/backend
+WORKDIR /backend
 
 # Copia los archivos del backend desde la carpeta backend de tu proyecto
 COPY backend/ .
@@ -17,7 +17,7 @@ CMD ["nodemon", "index.js"]
 FROM node:14 AS frontend
 
 # Establece el directorio de trabajo para el frontend
-WORKDIR /app/frontend
+WORKDIR /frontend
 
 # Copia los archivos del frontend desde la carpeta frontend de tu proyecto
 COPY frontend/ .
