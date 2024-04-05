@@ -5,7 +5,7 @@ FROM node:14 AS backend
 WORKDIR /app/backend
 
 # Copia los archivos del backend desde la carpeta backend de tu proyecto
-COPY lunchflow/backend/ .
+COPY /backend/ .
 
 # Instala las dependencias del backend
 RUN npm install
