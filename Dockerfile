@@ -41,4 +41,4 @@ WORKDIR /app/backend
 EXPOSE 3000
 
 # CMD predeterminado para ejecutar el backend y el frontend
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
