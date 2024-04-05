@@ -5,7 +5,7 @@ FROM node:14 AS backend
 WORKDIR /app/backend
 
 # Copia los archivos del backend desde la carpeta backend de tu proyecto
-COPY backend/ .
+COPY lunchflow/backend/ .
 
 # Instala las dependencias del backend
 RUN npm install
@@ -20,7 +20,7 @@ FROM node:14 AS frontend
 WORKDIR /app/frontend/luchflow-frontend
 
 # Copia los archivos del frontend desde la carpeta frontend de tu proyecto
-COPY frontend/luchflow-frontend/ .
+COPY lunchflow/frontend/luchflow-frontend/ .
 
 # Instala las dependencias del frontend
 RUN npm install
