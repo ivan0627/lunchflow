@@ -1,15 +1,15 @@
 # railway.toml
 
-# Configuración del backend
-[backend]
-  port = 5000 # Puerto en el que se ejecutará el backend
+# Scripts del backend
+[scripts]
+build_backend = "npm install && npm run build"
+run_backend = "nodemon index.js"
 
-# Comandos de construcción y despliegue del backend
-[build]
-  backend = "npm install --prefix backend && npm run build --prefix backend"
-  dev = "nodemon index.js"  # Este comando es para desarrollo
-  dist = "node index.js"     # Este comando es para producción
-
-# Comandos de construcción y despliegue del frontend
+# Dependencias del frontend en React
 [frontend]
-  build = "npm install --prefix frontend && npm run build --prefix frontend"
+react = "17.x"
+
+# Scripts del frontend
+[frontend.scripts]
+build_frontend = "npm install && npm run build"
+run_frontend = "npm start"
