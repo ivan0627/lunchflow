@@ -128,7 +128,7 @@ const saveMenu = async (e) => {
         requestData[`option${j + 1}`] = optionsForMenuDay[j];
       }
 
-      const response = await fetch("http://localhost:5000/auth/menu-creator", {
+      const response = await fetch("http://localhost:5000/menu-creator/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

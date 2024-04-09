@@ -4,7 +4,7 @@ const bycrypt = require('bcrypt');
 const jwtGenerator = require('../utils/jwtGenerator');
 const validInfo = require('../middleware/validInfo');
 const authorization = require('../middleware/authorization');
-const e = require('express');
+
 // register
 
 router.post("/register", validInfo, async(req, res) => {
@@ -93,7 +93,7 @@ router.post("/admin", authorization, async (req, res) => {
         const email = req.body.email;
         
         const user = await pool.query("SELECT * FROM users WHERE user_email = $1 and role = 'admin'", [email]);
-        console.log(user.rows)
+        
 
         if (user.rows.length === 0) {
             console.log("User is not an admin");
@@ -108,57 +108,8 @@ router.post("/admin", authorization, async (req, res) => {
     }
 });
 
-//insert menu into the menus table
-router.post("/menu-creator", authorization, async (req, res) => {
-    try {
-        
-        const { menu_date, menu_title, menu_description, menu_drink,
-            option1,
-            option2,
-            option3,
-            option4,
-            option5,
-            option6,
-            option7,
-            option8,
-            option9,
-            option10,
-        user_email
-        } = req.body;
-        const newMenu = await pool.query("INSERT INTO menus (menu_date, menu_title, menu_description, menu_drink, option_1, option_2, option_3, option_4, option_5, option_6, option_7, option_8, option_9, option_10, user_email ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15 ) RETURNING *", 
-            [menu_date, menu_title, menu_description, menu_drink, option1, option2, option3, option4, option5, option6, option7, option8, option9, option10, user_email]); // Assuming options is an array with 10 elements
-        res.json(newMenu.rows[0]);
 
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send("Server Error");
-    }
-});
 
-//get all menus from the next 7 days
-
-router.get("/menus", authorization, async (req, res) => {
-    try {
-        const user_email = req.user;
-        const menus = await pool.query("SELECT * FROM menus WHERE menu_date >= date_trunc('week',current_date + interval '1 week') + interval '1 day'AND menu_date < date_trunc('week', current_date + interval '1 week') + interval '5 day'; ");
-        res.json(menus.rows);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send("Server Error");
-    }
-});
-
-router.post ("/responses", authorization, async (req, res) => {
-    try {
-        const { user_email, menu_date, menu_title, menu_description, menu_drink, menu_id, menu_option, menu_note } = req.body;
-        const newResponse = await pool.query("INSERT INTO responses ( user_email, menu_date, menu_title, menu_description, menu_drink, menu_id, menu_option, menu_note) VALUES ($1, $2, $3, $4, $5, $6, $7, $8 ) RETURNING *", [ user_email, creation_date, menu_date, menu_title, menu_description, menu_drink, menu_id, menu_option, menu_note]);
-        res.json(newResponse.rows);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send("Server Error");
-    }
-}
-);
 
 
 

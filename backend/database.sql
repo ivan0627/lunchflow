@@ -76,7 +76,7 @@ create table responses (
 	menu_drink varchar(255) not null,
 	menu_id varchar(255) not null,
 	menu_option varchar(255) not null,
-	menu_note varchar(500) not null
+	menu_note varchar(500)
 );
 
 
