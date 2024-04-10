@@ -29,6 +29,11 @@ app.use("/menus", require("./routes/menus"));
 // Order History route
 app.use("/order-history", require("./routes/order-history"));
 
+// Menu History route - Delete menu is included here 
+app.use("/menu-history", require("./routes/menu-history"));
+
+
+
 app.listen(5000, () => {
     console.log('Server is running on port 5000');
     });

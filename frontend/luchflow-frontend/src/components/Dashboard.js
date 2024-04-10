@@ -7,6 +7,7 @@ const Dashboard = ({ setAuth }) => {
     const [menus, setMenus] = useState([]);
     const [menuSelections, setMenuSelections] = useState({}); // Para almacenar selecciones de menú y notas
 
+
     const formatDate = (dateString) => {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const date = new Date(dateString);
@@ -44,7 +45,7 @@ const Dashboard = ({ setAuth }) => {
                 // Inicializar menuSelections con las opciones por defecto para cada menú
                 const initialSelections = {};
                 parseRes.forEach(menu => {
-                    initialSelections[`menu_${menu.menu_id}`] = { option: null, note: "" };
+                    initialSelections[`menu_${menu.menu_id}`] = { option: null, note: "", allergy: ""};
                 });
                 setMenuSelections(initialSelections);
             } catch (err) {
@@ -74,6 +75,16 @@ const Dashboard = ({ setAuth }) => {
         }));
     };
 
+    const handleMenuAllergyChange = (menuId, allergy) => {
+        setMenuSelections(prevSelections => ({
+            ...prevSelections,
+            [menuId]: {
+                ...prevSelections[menuId],
+                allergy: allergy
+            }
+        }))
+    };
+
     const submitResponse = async (e) => {
         e.preventDefault();
     
@@ -88,6 +99,9 @@ const Dashboard = ({ setAuth }) => {
                 if (!menuNoteToSend) {
                     menuNoteToSend = "";
                 }
+                if (!menuSelections[menuId].allergy) {
+                    menuSelections[menuId].allergy = "";
+                }
     
                 const requestData = {
                     user_email: localStorage.email,
@@ -98,6 +112,7 @@ const Dashboard = ({ setAuth }) => {
                     menu_id: matchingMenu.menu_id,
                     menu_option: option,
                     menu_note: menuNoteToSend, // Enviar cadena vacía en lugar de null si la nota está vacía
+                    menu_allergy: menuSelections[menuId].allergy
                 };
     
                 try {
@@ -131,7 +146,7 @@ const Dashboard = ({ setAuth }) => {
         // Limpiar selecciones después de enviar
         const initialSelections = {};
         menus.forEach(menu => {
-            initialSelections[`menu_${menu.menu_id}`] = { option: null, note: "" };
+            initialSelections[`menu_${menu.menu_id}`] = { option: null, note: "", allergy: ""};
         });
         setMenuSelections(initialSelections);
     };
@@ -155,6 +170,8 @@ const Dashboard = ({ setAuth }) => {
                                         <p>{menu[optionKey]}</p>
                                         <input
                                             type="radio"
+
+                                            id="radio"
                                             name={`menu_${menu.menu_id}`}
                                             value={menu[optionKey]}
                                             onChange={(e) => handleOptionChange(`menu_${menu.menu_id}`, e.target.value)}
@@ -165,11 +182,22 @@ const Dashboard = ({ setAuth }) => {
                                 return null;
                             }
                         })}
+                        
                         <input
+                            
                             type="text"
                             placeholder="Other - Additional notes"
+                            className="otherNotes"
                             value={menuSelections[`menu_${menu.menu_id}`].note}
                             onChange={(e) => handleMenuNoteChange(`menu_${menu.menu_id}`, e.target.value)}
+                        />
+                        <input 
+                            type="text"
+                            placeholder='Allergies to any food? Please specify here.'
+                            className='otherNotes'
+                            value={menuSelections[`menu_${menu.menu_id}`].allergy}
+                            onChange={(e) => handleMenuAllergyChange(`menu_${menu.menu_id}`, e.target.value)}
+                        
                         />
                     </div>
                 ))}

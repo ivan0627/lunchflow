@@ -7,9 +7,8 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 --set extension
 CREATE TABLE users (user_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(), user_name VARCHAR(255) NOT NULL,  user_email VARCHAR(255) NOT NULL,user_password VARCHAR(255) NOT NULL, role varchar(255) DEFAULT 'employee' );
 
----insert users
 
-INSERT INTO USERS (user_name, user_email, user_password) VALUES ('test', 'test@test.com', 'test');
+
 
 --- Create menu table
 
@@ -22,7 +21,7 @@ user_email varchar(255) not null,
 creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 menu_date date not null,
 menu_title varchar(255) not null,
-menu_description varchar (500) not null,
+menu_description varchar (1000) not null,
 menu_drink varchar(255) not null,
 
 	option_1 varchar(50),
@@ -72,11 +71,12 @@ create table responses (
 	creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	menu_date date not null,
 	menu_title varchar(255) not null,
-	menu_description varchar (500) not null,
+	menu_description varchar (1000) not null,
 	menu_drink varchar(255) not null,
 	menu_id varchar(255) not null,
 	menu_option varchar(255) not null,
-	menu_note varchar(500)
+	menu_note varchar(500),
+	menu_allergy varchar(500)
 );
 
 

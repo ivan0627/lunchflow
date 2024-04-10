@@ -5,6 +5,7 @@
     align-items: center;
     max-height: none;
     background-color: #f5f5f5;
+    flex-wrap: wrap;
 }
 
 h1{
@@ -159,4 +160,54 @@ h1{
 }
 #savemenu:hover {
     background-color: #45a049;
+}
+
+.previousMenus{
+    width: 99%;
+    margin: 2%;
+    max-height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2%;
+}
+.previousMenus td{
+    padding: 5px;
+    text-align: center;
+}
+.previousMenus ul{
+    list-style-type: none;
+    padding: 0;
+}
+#orderHistoryDescription{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 3%;
+    margin-top:3%;
+    width: 50%;
+    text-align: center;
+}
+#deleteOldMenuButton{
+    width: 100%;
+    padding: 10%;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #ea675e;
+    color: white;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    max-height: 60%;
+}
+#deleteColumn{
+    width: 5%;
+}
+#dateColumn{
+    width: 4%;
+}
+#titleColumn{
+    width: 10%;
 }

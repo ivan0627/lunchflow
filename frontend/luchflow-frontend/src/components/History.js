@@ -21,7 +21,6 @@ const History = ({ setAuth }) => {
                 });
                 const parseRes = await response.json();
                 setOrder(parseRes);
-                console.log(parseRes);
     
             } catch (err) {
                 console.error(err.message);
@@ -30,29 +29,51 @@ const History = ({ setAuth }) => {
         fetchUserData();
     }, []);
 
+    const formatDate = (dateString) => {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const date = new Date(dateString);
+        const utcOffset = -5 * 60;
+        date.setMinutes(date.getMinutes() - utcOffset);
+        return date.toLocaleDateString('es-ES', options).toUpperCase();
+    };
+
 
     return (
-        <div>
+        <div >
             <h1>Order History</h1>
             
                 {order.length === 0 && <p>No orders found</p>}
-               
-                   <table>
+                <div className="tableContainer">
+                   <table className="ordersTable">
+                    <thead>
                         <tr>
-                            <th>Order ID</th>
-                            <th>Order Date</th>
-                            <th>Order Time</th>
-                            <th>Order Total</th>
+                            <th >Menu Date</th>
+                            <th>Response Date</th>
+                            <th>Menu Title</th>
+                            <th>Menu Description</th>
+                            <th>Menu Drink</th>
+                            <th>Option Selected</th>
+                            <th>Additional Notes</th>
+                            <th>Allergies</th>
                         </tr>
+                    </thead>
+
+                    <tbody>
                         {order.map(order => (
-                        <tr>
-                            <td>{order.order_id}</td>
-                            <td>{order.order_date}</td>
-                            <td>{order.order_time}</td>
-                            <td>{order.order_total}</td>
+                        <tr >
+                            <td>{formatDate(order.menu_date)}</td>
+                            <td>{formatDate(order.creation_date)}</td>
+                            <td>{order.menu_title}</td>
+                            <td>{order.menu_description}</td>
+                            <td>{order.menu_drink}</td>
+                            <td>{order.menu_option}</td>
+                            <td>{order.menu_note}</td>
+                            <td>{order.menu_allergy}</td>
                         </tr>
                         ))}
+                    </tbody>
                     </table>
+                </div>
                 
                 
                 

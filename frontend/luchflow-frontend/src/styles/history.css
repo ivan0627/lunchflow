@@ -1,0 +1,27 @@
+
+.tableContainer{
+    
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin: 0 5%;
+    
+}
+.tableContainer th{
+    background-color: #f2f2f2;
+    color: #333;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+.tableContainer td{
+    background-color: #fff;
+    color: #333;
+    font-size: 15px;
+    padding: 10px 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}

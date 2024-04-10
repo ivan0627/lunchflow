@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import "../styles/MenuCreator.css";
 
@@ -15,6 +15,7 @@ const MenuCreator = () => {
   const [quantity, setQuantity] = useState(0);
   const [options, setOptions] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
+  const [orderHistory, setOrderHistory] = useState([]);
 
   const handleDateChange = (e) => {
     const { value } = e.target;
@@ -145,9 +146,52 @@ const saveMenu = async (e) => {
   } catch (err) {
     console.error(err.message);
   }
+
 };
 
 
+useEffect(() => {
+  async function getMenuHistory() {
+    try {
+      const response = await fetch("http://localhost:5000/menu-history/", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.token,
+          
+        },
+      });
+      const parseRes = await response.json();
+      setOrderHistory(parseRes);
+      
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+  getMenuHistory();
+}, []);
+
+const deleteOldMenu = (index) => {
+  return async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/menu-history/${orderHistory[index].menu_id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.token,
+        },
+      });
+      const parseRes = await response.json();
+      console.log(parseRes);
+      toast.success("Menu deleted successfully");
+      const newOrderHistory = [...orderHistory];
+      newOrderHistory.splice(index, 1);
+      setOrderHistory(newOrderHistory);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+}
 
   return (
     <div className="outsidecontainer">
@@ -246,6 +290,42 @@ const saveMenu = async (e) => {
               )}
             </div>
         </form>
+
+        <div className="previousMenus">
+          <table>
+                    <tr>
+                      <th id="dateColumn">Date</th>
+                      <th id="titleColumn">Title</th>
+                      <th>Description</th>
+                      <th>Drink</th>
+                      <th>Options</th>
+                      <th id="deleteColumn"></th>
+                    </tr>
+          {orderHistory.map((order, index) => (
+                  
+                  
+                  <tr key={order.menu_id}>
+                    <td>{formatDate(order.menu_date)}</td>
+                    <td>{order.menu_title}</td>
+                    <td id="orderHistoryDescription">{order.menu_description}</td>
+                    <td>{order.menu_drink}</td>
+                    <td>
+                      <ul>
+                        {Object.keys(order).map((key) => {
+                          if (key.includes("option")) {
+                            return <li key={key}>{order[key]}</li>;
+                          }
+                          return null;
+                        })}
+                      </ul>
+                    </td>
+                    <td>
+                      <button id='deleteOldMenuButton' type="button" onClick={deleteOldMenu(index)}>Delete</button>
+                    </td>
+                  </tr>
+                ))}
+            </table>
+        </div>                
       </div>
     </div>
   );
