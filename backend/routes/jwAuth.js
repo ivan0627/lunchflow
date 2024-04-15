@@ -96,7 +96,6 @@ router.post("/admin", authorization, async (req, res) => {
         
 
         if (user.rows.length === 0) {
-            console.log("User is not an admin");
             return res.status(401).json({ message: "You are not an admin" });
         }
         

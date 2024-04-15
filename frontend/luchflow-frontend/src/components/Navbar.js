@@ -25,6 +25,8 @@ const Navbar = ({setAuth, isAdmin }) => {
             </a>
             <a href="/history">Order History</a>
             {isAdmin ? <a id="menu-creator" href="/menu-creator">Menu Creator</a> : null}
+            {isAdmin ? <a id ="delete-users" href="/delete-users">Delete Users</a>: null}
+
             <button onClick={(e) => logout(e)}>Logout</button>
         </div>
     );

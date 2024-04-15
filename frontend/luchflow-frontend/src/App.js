@@ -16,27 +16,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  const debounce = (callback, delay) => {
-    let timeoutId;
-    return function (...args) {
-      const context = this;
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => callback.apply(context, args), delay);
-    };
-  };
   
-  const ResizeObserver = (callback) => {
-    useEffect(() => {
-      const debouncedCallback = debounce(callback, 20);
-      const observer = new window.ResizeObserver(debouncedCallback);
-      return () => {
-        observer.disconnect();
-      };
-    }, [callback]);
-  
-    return null; // This component doesn't render anything
-  };
-  
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setIsLoading] = useState(true); // New state for loading indicator
@@ -115,13 +96,14 @@ function App() {
       <Router>
         <div className="Appcontainer">
           {isAuthenticated && <Navbar setAuth={setAuth} isAdmin={isAdmin} />}
-          
+
           <Routes>
             <Route path="/dashboard" element={isAuthenticated ? (<Dashboard setAuth={setAuth} />) : (<Navigate to="/login" />)} />
             <Route path="/history" element={isAuthenticated ? (<History setAuth={setAuth} />) : (<Navigate to="/login" />)} />
             <Route path="/register" element={!isAuthenticated ? (<Register setAuth={setAuth} />) : (<Navigate to="/login" />)} />
             <Route path="/login" element={!isAuthenticated ? (<Login setAuth={setAuth} setAdmin={setAdmin} />) : (<Navigate to="/dashboard" />)} />
             <Route path="/menu-creator" element={isAdmin && isAuthenticated ? (<MenuCreator />) : <Navigate to="/dashboard" />} />
+            <Route path="/delete-users" element={isAdmin && isAuthenticated ? (<MenuCreator />) : <Navigate to="/dashboard" />} />
             <Route path="/" element={!isAuthenticated ? (<Login setAuth={setAuth} setAdmin={setAdmin} />) : (<Navigate to="/dashboard" />)} />
           </Routes>
         </div>

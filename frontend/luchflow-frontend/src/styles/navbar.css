@@ -7,7 +7,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 20px 100px;
-        background-color: #ffa700;
+        background-color: #198ca5;
         color: white;
         
    
@@ -37,7 +37,7 @@ align-items: center;
 .navbar button {
     padding: 10px 15px;
     background-color: white;
-    color: #ffa700;
+    color: #198ca5;
     border: none;
     border-radius: 5px;
     cursor: pointer;
