@@ -1,12 +1,14 @@
 import React, { Fragment, useState, useEffect } from "react";
 import '../styles/dashboard.css';
 import { toast } from "react-toastify";
+import URLS from "../config";
 
 const Dashboard = ({ setAuth }) => {
     const [name, setName] = useState("");
     const [menus, setMenus] = useState([]);
     const [menuSelections, setMenuSelections] = useState({}); // Para almacenar selecciones de menú y notas
 
+    
 
     const formatDate = (dateString) => {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -19,7 +21,7 @@ const Dashboard = ({ setAuth }) => {
     useEffect(() => {
         async function fetchUserData() {
             try {
-                const response = await fetch("http://localhost:5000/dashboard/", {
+                const response = await fetch(URLS.SERVER+"/dashboard/", {
                     method: "GET",
                     headers: { token: localStorage.token }
                 });
@@ -35,7 +37,7 @@ const Dashboard = ({ setAuth }) => {
     useEffect(() => {
         async function fetchMenus() {
             try {
-                const response = await fetch("http://localhost:5000/menus/", {
+                const response = await fetch(URLS.SERVER+"/menus/", {
                     method: "GET",
                     headers: { token: localStorage.token }
                 });
@@ -116,7 +118,7 @@ const Dashboard = ({ setAuth }) => {
                 };
     
                 try {
-                    const response = await fetch("http://localhost:5000/responses/", {
+                    const response = await fetch(URLS.SERVER+"/responses/", {
                         method: "POST",
                         body: JSON.stringify(requestData),
                         headers: {

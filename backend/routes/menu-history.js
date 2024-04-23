@@ -4,7 +4,7 @@ const authorization = require("../middleware/authorization");
 
 router.get("/", authorization, async (req, res) => {
     try {
-        const menuHistory = await pool.query("SELECT * FROM menus");
+        const menuHistory = await pool.query("SELECT * FROM menus order BY menu_date DESC LIMIT 50");
         res.json(menuHistory.rows);
     } catch (err) {
         console.error(err.message);

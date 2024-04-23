@@ -35,6 +35,9 @@ app.use("/menu-history", require("./routes/menu-history"));
 // Delete Users route
 app.use("/delete-users", require("./routes/delete-users"));
 
+// response-report route
+app.use("/responses-report", require("./routes/responses-report"));
+
 app.listen(5000, () => {
     console.log('Server is running on port 5000');
     });

@@ -7,13 +7,17 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import MenuCreator from './components/MenuCreator';
 import History from './components/History';
-
+import DeleteUsers from './components/DeleteUsers';
+import ResponsesReport from './components/ResponsesReport';
 //style
 import './App.css';
 
 // toastify
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+//urls
+import URLS from './config';
 
 function App() {
   
@@ -32,7 +36,7 @@ function App() {
 
   async function isAuth() {
     try {
-      const response = await fetch("http://localhost:5000/auth/is-verified", {
+      const response = await fetch(URLS.SERVER+"auth/is-verified", {
         method: "GET",
         headers: { token: localStorage.token }
       });
@@ -49,7 +53,7 @@ function App() {
 
   async function isAdministrator() {
     try{ //check if user is admin
-      const admin = await fetch("http://localhost:5000/auth/admin", {
+      const admin = await fetch(URLS.SERVER+"/auth/admin", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -103,8 +107,9 @@ function App() {
             <Route path="/register" element={!isAuthenticated ? (<Register setAuth={setAuth} />) : (<Navigate to="/login" />)} />
             <Route path="/login" element={!isAuthenticated ? (<Login setAuth={setAuth} setAdmin={setAdmin} />) : (<Navigate to="/dashboard" />)} />
             <Route path="/menu-creator" element={isAdmin && isAuthenticated ? (<MenuCreator />) : <Navigate to="/dashboard" />} />
-            <Route path="/delete-users" element={isAdmin && isAuthenticated ? (<MenuCreator />) : <Navigate to="/dashboard" />} />
+            <Route path="/delete-users" element={isAdmin && isAuthenticated ? (<DeleteUsers />) : <Navigate to="/dashboard" />} />
             <Route path="/" element={!isAuthenticated ? (<Login setAuth={setAuth} setAdmin={setAdmin} />) : (<Navigate to="/dashboard" />)} />
+            <Route path="/responses" element={isAdmin && isAuthenticated ? (<ResponsesReport />) : <Navigate to="/dashboard" />} />
           </Routes>
         </div>
       </Router>

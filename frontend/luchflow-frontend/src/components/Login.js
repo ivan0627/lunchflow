@@ -1,6 +1,7 @@
 import React, {Fragment, useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import logo from '../logo.png'
+import URLS from "../config";
 
 // toastify
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,7 +12,6 @@ import "../styles/login.css"
 
 const Login = ({ setAuth }) => {
 
-    
     const [inputs, setInputs] = useState ({
         email: "",
         password: ""
@@ -30,7 +30,7 @@ const Login = ({ setAuth }) => {
         try{
             const body = {email, password}
             console.log(JSON.stringify(inputs))
-            const response = await fetch ("http://localhost:5000/auth/login", {
+            const response = await fetch (URLS.SERVER+"/auth/login", {
             method: "POST",
             headers: {"Content-Type" : "application/json"},
             body : JSON.stringify(body)
@@ -47,9 +47,7 @@ const Login = ({ setAuth }) => {
                 toast.error(parseRes.message)
                 toast.error(parseRes)
             }
-            
-            
-            
+                        
         }
         catch (err) {
             console.log(err.message)

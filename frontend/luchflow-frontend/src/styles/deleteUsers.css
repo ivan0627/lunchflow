@@ -1,0 +1,58 @@
+
+.tableContainerDeleteUsers {
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin: 5% 5%;
+}
+
+.tableContainerDeleteUsers th {
+  
+    width: 80%;
+  background-color: #f2f2f2;
+  color: #333;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 10px 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+
+}
+
+.tableContainerDeleteUsers td{
+    background-color: #fff;
+    color: #333;
+    font-size: 15px;
+    padding: 10px 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+
+#deleteUserButton{
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+}
+#modifyRoleButton{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+}
+#emailColumn{
+    max-width: 40%;
+}

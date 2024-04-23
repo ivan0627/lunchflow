@@ -1,6 +1,7 @@
 import React, {Fragment, useState} from "react";
 import { Link } from "react-router-dom";
-import "../styles/register.css"
+import "../styles/register.css";
+import URLS from "../config";
 
 //toastify
 import { ToastContainer, toast } from 'react-toastify';
@@ -33,7 +34,7 @@ const Register = ({ setAuth }) => {
 
         try{
             const body = {email, password, name}
-            const response = await fetch ("http://localhost:5000/auth/register", {
+            const response = await fetch (URLS.SERVER+"/auth/register", {
             method: "POST",
             headers: {"Content-Type" : "application/json"},
             body : JSON.stringify(body)

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import "../styles/MenuCreator.css";
+import URLS from "../config";
 
 const PopupComment = ({ message }) => {
   return <div className="popup-comment">{message}</div>;
@@ -129,7 +130,7 @@ const saveMenu = async (e) => {
         requestData[`option${j + 1}`] = optionsForMenuDay[j];
       }
 
-      const response = await fetch("http://localhost:5000/menu-creator/", {
+      const response = await fetch(URLS.SERVER+"/menu-creator/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -153,7 +154,7 @@ const saveMenu = async (e) => {
 useEffect(() => {
   async function getMenuHistory() {
     try {
-      const response = await fetch("http://localhost:5000/menu-history/", {
+      const response = await fetch(URLS.SERVER+"/menu-history/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -174,7 +175,7 @@ useEffect(() => {
 const deleteOldMenu = (index) => {
   return async () => {
     try {
-      const response = await fetch(`http://localhost:5000/menu-history/${orderHistory[index].menu_id}`, {
+      const response = await fetch(URLS.SERVER+`/menu-history/${orderHistory[index].menu_id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

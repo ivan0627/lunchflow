@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import '../styles/history.css';
 import { toast } from "react-toastify";
+import URLS from "../config";
 
 const History = ({ setAuth }) => {
 
@@ -11,7 +12,7 @@ const History = ({ setAuth }) => {
         async function fetchUserData() {
             try {
                 const response = await 
-                fetch("http://localhost:5000/order-history/", {
+                fetch(URLS.SERVER+"/order-history/", {
                     method: "GET",
 
                     headers: {"Content-Type": "application/json",

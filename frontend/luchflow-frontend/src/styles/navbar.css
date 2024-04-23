@@ -7,9 +7,9 @@
         justify-content: space-between;
         align-items: center;
         padding: 20px 100px;
-        background-color: #198ca5;
+        background-color: #44b6e8;
         color: white;
-        
+        flex-shrink: 1;
    
 }
 

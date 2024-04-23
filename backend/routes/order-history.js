@@ -5,7 +5,7 @@ const authorization = require("../middleware/authorization");
 // get all orders, limit to 50 
 router.get("/", authorization, async (req, res) => {
   try {
-        const allOrders = await pool.query("SELECT * FROM responses WHERE user_id = $1 LIMIT 50", [req.user]);
+        const allOrders = await pool.query("SELECT * FROM responses WHERE user_id = $1 order BY menu_date DESC LIMIT 50", [req.user]);
     res.json(allOrders.rows);
 
   } catch (err) {

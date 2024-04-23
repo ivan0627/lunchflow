@@ -73,7 +73,7 @@
     flex-wrap: wrap;
     width: 100%;
     padding: 10px;
-    background-color: #ffa700;
+    background-color: #44b6e8;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -83,7 +83,7 @@
     justify-content: center;
 }
 .loginForm button:hover{
-    background-color: #ff8c00;
+    background-color: #226684;
 }
 .registerButton
 { 
