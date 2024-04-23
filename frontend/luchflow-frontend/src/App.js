@@ -36,7 +36,7 @@ function App() {
 
   async function isAuth() {
     try {
-      const response = await fetch(URLS.SERVER+"auth/is-verified", {
+      const response = await fetch(URLS.SERVER+"/auth/is-verified", {
         method: "GET",
         headers: { token: localStorage.token }
       });
