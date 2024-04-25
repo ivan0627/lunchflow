@@ -5,7 +5,8 @@ const pool = new Pool({
     password: "lo61SomUjtcU4vJfN8PC7ajglLKdhc1L",
     host: "dpg-cokslsud3nmc739kuc4g-a.oregon-postgres.render.com",
     port: 5432,
-    database: "lunchflow"
+    database: "lunchflow",
+    ssl: true
 });
 module.exports = pool;
 
