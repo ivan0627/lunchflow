@@ -13,7 +13,7 @@ import ResponsesReport from './components/ResponsesReport';
 import './App.css';
 
 // toastify
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 //urls

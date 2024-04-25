@@ -1,6 +1,6 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, {  useState, useEffect } from "react";
 import '../styles/history.css';
-import { toast } from "react-toastify";
+
 import URLS from "../config";
 
 const History = ({ setAuth }) => {

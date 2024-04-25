@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from "react";
+import React, {Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from '../logo.png'
 import URLS from "../config";
