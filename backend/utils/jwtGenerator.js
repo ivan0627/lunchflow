@@ -5,7 +5,7 @@ function jwtGenerator(user_id) {
     const payload = {
         user: user_id
     };
-    secretOrKey = process.env.jwtSecret;
+    secretOrKey = "cat123";
     return jwt.sign(payload, secretOrKey, { expiresIn: "1hr" });
 }
 
