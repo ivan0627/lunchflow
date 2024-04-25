@@ -10,13 +10,13 @@ import 'react-toastify/dist/ReactToastify.css';
 //style
 import "../styles/login.css"
 
-const Login = ({ setAuth }) => {
+const Login = ({setAuth, setAdmin}) => {
 
     const [inputs, setInputs] = useState ({
         email: "",
         password: ""
     })
-    
+    //const [isAdmin, setAdmin] = useState(false);
 
     const { email, password } = inputs;
 
@@ -47,6 +47,26 @@ const Login = ({ setAuth }) => {
                 toast.error(parseRes.message)
                 toast.error(parseRes)
             }
+
+            
+                  const admin = await fetch(URLS.SERVER+"/auth/admin", {
+                    method: "POST",
+                    headers: { 
+                      "Content-Type": "application/json",
+                      "token": localStorage.token
+                    },
+                    body: JSON.stringify({ email: localStorage.email }),
+                  });
+            
+                  const result = await admin.json();
+                  console.log("result.message " + result.message);
+                  // Check if the response contains a message indicating the user is not an admin
+                  if (result.message === "You are not an admin") {
+                    setAdmin(false);
+                  } else {
+                    setAdmin(true);
+                  }
+                
                         
         }
         catch (err) {

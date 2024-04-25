@@ -48,28 +48,28 @@ const History = ({ setAuth }) => {
                    <table className="ordersTable">
                     <thead>
                         <tr>
-                            <th >Menu Date</th>
-                            <th>Response Date</th>
-                            <th>Menu Title</th>
-                            <th>Menu Description</th>
-                            <th>Menu Drink</th>
-                            <th>Option Selected</th>
-                            <th>Additional Notes</th>
-                            <th>Allergies</th>
+                            <th id="menuDateTh">Menu Date</th>
+                            <th id="responseDateTh">Response Date</th>
+                            <th id="menuTitleTh">Menu Title</th>
+                            <th id="menuDescriptionTh">Menu Description</th>
+                            <th id="menuDrinkTh">Menu Drink</th>
+                            <th id="optionSelectedTh">Option Selected</th>
+                            <th id="additionalNotesTh">Additional Notes</th>
+                            <th id="allergiesTh">Allergies</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         {order.map(order => (
                         <tr >
-                            <td>{formatDate(order.menu_date)}</td>
-                            <td>{formatDate(order.creation_date)}</td>
-                            <td>{order.menu_title}</td>
-                            <td>{order.menu_description}</td>
-                            <td>{order.menu_drink}</td>
-                            <td>{order.menu_option}</td>
-                            <td>{order.menu_note}</td>
-                            <td>{order.menu_allergy}</td>
+                            <td id="menuDateTd">{formatDate(order.menu_date)}</td>
+                            <td id="responseDateTd">{formatDate(order.creation_date)}</td>
+                            <td id="menuTitleTd">{order.menu_title}</td>
+                            <td id="menuDescriptionTd">{order.menu_description}</td>
+                            <td id="menuDrinkTd">{order.menu_drink}</td>
+                            <td id="optionSelectedTd">{order.menu_option}</td>
+                            <td id="additionalNotesTd">{order.menu_note}</td>
+                            <td id="allergiesTd">{order.menu_allergy}</td>
                         </tr>
                         ))}
                     </tbody>

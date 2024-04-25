@@ -4,7 +4,9 @@
     border-collapse: collapse;
     margin-top: 20px;
     margin: 0 5%;
-    
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 1;
 }
 .tableContainer th{
     background-color: #f2f2f2;
@@ -36,4 +38,16 @@
     margin: 10px 0;
     cursor: pointer;
     border-radius: 2px;
+}
+
+#exportExcel:hover{
+    background-color: #45a049;
+}
+
+@media screen and (max-width: 1000px){
+    #responseDateTh, #menuDrinkTh, #allergiesTh, #menuTitleTh,
+    #responseDateTd, #menuDrinkTd, #allergiesTd, #menuTitleTd{
+        display: none;
+        max-width: 10px;
+    }
 }

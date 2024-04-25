@@ -36,7 +36,7 @@ h1{
 
 .menucontainer {
     max-width: 40%;
-    min-width: 40%;
+    min-width: 400px;
     min-height: 100vh;
     margin-left: 2%;
     margin-top: 2%;
@@ -47,6 +47,7 @@ h1{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-wrap: wrap;
+
 }
 
 .menucontainer input{

@@ -41,13 +41,15 @@ h2{
     cursor: pointer;
     transition: all 0.3s ease;
     
-
 }
 .menuSelector{
     min-width: 340px;
     max-width: 30%;
-    box-shadow: 0 0 5px rgb(0, 0, 0);
+    box-shadow: 0 0 5px rgba(55, 55, 55, 0.393);
+    margin-bottom: 30px !important;
+    padding: 20px !important;
 }
+
 #optionBox{
     display: flex;
     justify-content: space-between;

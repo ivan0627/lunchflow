@@ -23,15 +23,15 @@ function App() {
   
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
   const [isLoading, setIsLoading] = useState(true); // New state for loading indicator
 
   const setAuth = boolean => {
     setIsAuthenticated(boolean);
   };
 
-  const setAdmin = value => {
-    setIsAdmin(value);
+  const setAdmin = boolean => {
+    setIsAdmin(boolean);
   };
 
   async function isAuth() {
@@ -51,6 +51,7 @@ function App() {
     }
   }
 
+  
   async function isAdministrator() {
     try{ //check if user is admin
       const admin = await fetch(URLS.SERVER+"/auth/admin", {
@@ -69,7 +70,6 @@ function App() {
         setAdmin(false);
       } else {
         setAdmin(true);
-        localStorage.setItem("isAdmin", true);
       }
     } catch (err) { 
       console.error(err.message);
