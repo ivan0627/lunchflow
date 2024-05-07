@@ -2,6 +2,7 @@ import React, {Fragment, useState} from "react";
 import { Link } from "react-router-dom";
 import "../styles/register.css";
 import URLS from "../config";
+import logo from '../logo.png'
 
 //toastify
 import { ToastContainer, toast } from 'react-toastify';
@@ -62,8 +63,14 @@ const Register = ({ setAuth }) => {
         <Fragment>
         <ToastContainer />
         <div className="registerContainer">
-        <h1 className="text-center my-5">Register</h1>
+        <div className="logoLoginContainer">
+            <div className="logoLogin">
+                    <img src={logo} alt="logo" />
+            </div>
+        </div>  
         <form onSubmit={onSubmitForm} className="registerForm">
+            
+        <h2 className="text-center my-5">Sign Up</h2>
             <input type="email" name="email" placeholder="Coupa's email" className="form-control my-3" value={email} onChange={e => onChange(e)}/>
             <input type="password" name="password" placeholder="password" className="form-control my-3" value={password} onChange={e => onChange(e)}/>
             <input type="password" name="repeatPassword" value={repeatPassword}  placeholder="repeat the password" className="form-control my-3" onChange={e => onChange(e)}/>

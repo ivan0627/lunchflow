@@ -2,12 +2,13 @@
 .navbar{
 
         min-width: 100%;
+        height: 6em;
         margin : 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 20px 100px;
-        background-color: #44b6e8;
+        background-color:#1976d2;
         color: white;
         flex-shrink: 1;
    
@@ -21,7 +22,7 @@
     position: relative;
 }
 .navbar a:hover{
-    color: black;
+    color: #29488A;
 }
 
 .logo{
@@ -47,13 +48,14 @@ align-items: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
  button:hover{
-    background-color: rgb(51, 48, 48);
+    background-color: #29488A;
 }
 
 @media screen and (max-width: 827px){
     .navbar{
         flex-direction: column;
         padding: 20px 0;
+        height: auto;
     }
     .navbar a{
         margin: 10px 0;

@@ -156,14 +156,16 @@ const Dashboard = ({ setAuth }) => {
     return (
         <Fragment>
             <h1>Welcome {name}</h1>
-            <h2>Here are next week's options for lunch:</h2>
+            <h2 id="h2Dashboard">Here are the lunch options for next week</h2>
             <div className="menuSelectorContainer">
                 {menus.map(menu => (
                     <div className="menuSelector" key={menu.menu_id}>
                         <h2>{menu.menu_title}</h2>
-                        <p>Date: {formatDate(menu.menu_date)}</p>
+                        <p><strong>DATE: {formatDate(menu.menu_date)}</strong></p>
+                        <br></br>
                         <p>{menu.menu_description}</p>
                         <p>{menu.menu_drink}</p>
+                        <br></br>
                         {Array.from({ length: 10 }, (_, index) => index + 1).map(optionIndex => {
                             const optionKey = `option_${optionIndex}`;
                             if (menu[optionKey] !== null) {

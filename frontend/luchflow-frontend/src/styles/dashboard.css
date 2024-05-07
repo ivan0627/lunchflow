@@ -10,13 +10,14 @@ h1{
     font-weight: 700;
     color: #333;
     margin-bottom: 1rem;
+    margin-left: 2rem;
 }
 h2{
     font-size: 2rem;
     font-weight: 700;
     color: #333;
     margin-bottom: 1rem;
-    margin-left: 2rem;
+    text-align: center;
 }
 
 .menuSelectorContainer{
@@ -34,7 +35,7 @@ h2{
 
 .menuSelectorContainer div{
     margin: 0.5rem;
-    border: 1px solid #333;
+    border: 1px solid #a9a9a9a1;
     border-radius: 5px;
     box-sizing: border-box;
     padding: 0.5rem;
@@ -45,7 +46,7 @@ h2{
 .menuSelector{
     min-width: 340px;
     max-width: 30%;
-    box-shadow: 0 0 5px rgba(55, 55, 55, 0.393);
+    box-shadow: 0 0 10px rgba(64, 64, 64, 0.393);
     margin-bottom: 30px !important;
     padding: 20px !important;
 }
@@ -55,6 +56,7 @@ h2{
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 1rem;
+
 }
 
 #dashboardSubmit{
@@ -65,14 +67,14 @@ h2{
     margin: 3% 30%;
     border: none;
     border-radius: 5px;
-    background-color: #333;
+    background-color: #1976D2;
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 20px;
 }
 #dashboardSubmit:hover{
-    background-color: #5c5b5b;
+    background-color: #29488A;
 }
 
 .otherNotes{

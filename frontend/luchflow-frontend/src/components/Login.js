@@ -75,12 +75,11 @@ const Login = ({setAuth, setAdmin}) => {
     }
 
     return (
-        <Fragment className='fragment'>
+        <Fragment className='fragment-login'>
          <ToastContainer />
          
         <div className="loginContainer">
             
-         <h1>Welcome - Login</h1>
         <div className="logoLoginContainer">
             <div className="logoLogin">
                     <img src={logo} alt="logo" />
@@ -89,6 +88,7 @@ const Login = ({setAuth, setAdmin}) => {
             
             <form onSubmit={onSubmitForm} className="loginForm" >
                 
+         <h2>Login</h2>
                 <input 
                     type="email" 
                     name="email" 
@@ -115,7 +115,7 @@ const Login = ({setAuth, setAdmin}) => {
              <div className="registerButton">
                 <p>Don't have an account? </p>
                 <br></br>
-                <Link to="/register" id="registerButton">Register here</Link>
+                <Link to="/register" id="registerButton">Sign Up Here!</Link>
                 </div>
         </div>
         </Fragment>

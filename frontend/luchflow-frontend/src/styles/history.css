@@ -1,12 +1,11 @@
 
 .tableContainer{
-    
     border-collapse: collapse;
-    margin-top: 20px;
-    margin: 0 5%;
+    margin: 20px 5%;
     display: flex;
     flex-wrap: wrap;
     flex-shrink: 1;
+
 }
 .tableContainer th{
     background-color: #f2f2f2;

@@ -1,21 +1,28 @@
 
 .loginContainer{
     display: flex;
+    min-width: 100%;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;    
-    background-color: #ffffff;
-    height: 6vh;    
+    align-items: center;     
+    min-height: 100vh;  
+    background-image: url(../loginWallpaper.png) ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    
+
 }
 
 
 .loginForm{
-    min-width: 60%;
+    max-width: 55%;
     padding: 0 20%;
     margin-bottom: 2%;
     border: 0.5px solid #5a5a5a2a;
     border-radius: 10px;
-    box-shadow: 0 0 10px #5a5a5a80;
+    box-shadow: 0 0 10px #5a5a5a68;
     background-color: #ffffff;
     padding: 20px;
     margin-top: 2%;
@@ -26,12 +33,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    z-index: 1;
 }
 .loginContainer h1{
     width: 100%;
     font-size: 50px;
     font-weight: bold;
-    color: #5a5a5a;
+    color: #000000bb;
     margin-top: 5%;
     margin-bottom: 1%;
     text-align: center;
@@ -39,19 +47,24 @@
 }
 
 .logoLoginContainer{
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    height: 7vh;
+    align-items: center;    
+    max-height: 15vh;
     margin-top: 2%;
     margin-bottom: 2%;
+    min-height: 60px;
 }
 
 .logoLogin{
-    max-width: 15%;
+    max-width: 12%;
+    min-width: 10em;
+    margin-top: 3em
+
 }
+
 .logoLogin img{
     max-width: 100%;
     height: 100%;
@@ -73,7 +86,7 @@
     flex-wrap: wrap;
     width: 100%;
     padding: 10px;
-    background-color: #44b6e8;
+    background-color: #1976D2;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -83,14 +96,14 @@
     justify-content: center;
 }
 .loginForm button:hover{
-    background-color: #226684;
+    background-color: #29488A;
 }
 .registerButton
 { 
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    background-color: #ffffff;
+    
     color: #919191;
     border: none;
     border-radius: 5px;

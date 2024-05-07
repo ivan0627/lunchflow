@@ -79,7 +79,7 @@ h1{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    background-color: #4CAF50;
+    background-color: #1976D2;
     color: white;
     font-weight: 700;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -88,7 +88,7 @@ h1{
 }
   
 .menucontainerbuttons button:hover {
-    background-color: #45a049;
+    background-color: #29488A;
 }
 #optionInput{
     min-width: 100%;
@@ -152,7 +152,7 @@ h1{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    background-color: #4CAF50;
+    background-color: #1976D2;
     color: white;
     font-weight: 700;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -160,7 +160,7 @@ h1{
     max-height: 60%;
 }
 #savemenu:hover {
-    background-color: #45a049;
+    background-color: #29488A;
 }
 
 .previousMenus{
