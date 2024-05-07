@@ -1,0 +1,38 @@
+# Exported from Render on 2024-05-07T01:16:34Z
+databases:
+- name: lunchflow
+  databaseName: lunchflow
+  user: root
+  plan: free
+  region: oregon
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "16"
+services:
+- type: web
+  name: lunchflow
+  runtime: node
+  repo: https://github.com/ivan0627/lunchflow
+  branch: main
+  plan: free
+  envVars:
+  - key: .env
+    sync: false
+  region: oregon
+  buildCommand: npm install
+  startCommand: node index.js
+  rootDir: backend
+- type: web
+  name: lunchflow-by-coupa
+  runtime: static
+  repo: https://github.com/ivan0627/lunchflow
+  branch: main
+  buildCommand: npm run build
+  staticPublishPath: build
+  routes:
+  - type: rewrite
+    source: /*
+    destination: /index.html
+  rootDir: frontend/luchflow-frontend
+version: "1"
