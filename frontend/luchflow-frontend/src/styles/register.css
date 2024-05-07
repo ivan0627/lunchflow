@@ -97,3 +97,9 @@
     text-align: center;
     
 }
+
+@media  screen and (max-width: 768px) {
+    .registerForm{
+        min-width: 90%;
+    }
+}

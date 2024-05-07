@@ -10,8 +10,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
-    
+     
 
 }
 
@@ -122,4 +121,10 @@
     margin-bottom: 11%;
     text-align: center;
     
+}
+
+@media  screen and (max-width: 768px) {
+    .loginForm{
+        min-width: 90%;
+    }
 }
