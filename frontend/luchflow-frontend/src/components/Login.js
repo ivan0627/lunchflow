@@ -29,7 +29,7 @@ const Login = ({setAuth, setAdmin}) => {
         
         try{
             const body = {email, password}
-            console.log(JSON.stringify(inputs))
+            
             const response = await fetch (URLS.SERVER+"/auth/login", {
             method: "POST",
             headers: {"Content-Type" : "application/json"},

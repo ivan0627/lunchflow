@@ -163,8 +163,9 @@ const Dashboard = ({ setAuth }) => {
                         <h2>{menu.menu_title}</h2>
                         <p><strong>DATE: {formatDate(menu.menu_date)}</strong></p>
                         <br></br>
-                        <p>{menu.menu_description}</p>
-                        <p>{menu.menu_drink}</p>
+                        <p id="menuDescriptionP">{menu.menu_description}</p>
+                        <br></br>
+                        <p><strong>Bebida</strong>{menu.menu_drink}</p>
                         <br></br>
                         {Array.from({ length: 10 }, (_, index) => index + 1).map(optionIndex => {
                             const optionKey = `option_${optionIndex}`;

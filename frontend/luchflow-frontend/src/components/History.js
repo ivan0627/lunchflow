@@ -35,7 +35,7 @@ const History = ({ setAuth }) => {
         const date = new Date(dateString);
         const utcOffset = -5 * 60;
         date.setMinutes(date.getMinutes() - utcOffset);
-        return date.toLocaleDateString('es-ES', options).toUpperCase();
+        return date.toLocaleDateString('es-ES', options);
     };
 
 
@@ -44,41 +44,32 @@ const History = ({ setAuth }) => {
             <h1>Order History</h1>
             
                 {order.length === 0 && <p>No orders found</p>}
-                <div className="tableContainer">
-                   <table className="ordersTable">
-                    <thead>
-                        <tr>
-                            <th id="menuDateTh">Menu Date</th>
-                            <th id="responseDateTh">Response Date</th>
-                            <th id="menuTitleTh">Menu Title</th>
-                            <th id="menuDescriptionTh">Menu Description</th>
-                            <th id="menuDrinkTh">Menu Drink</th>
-                            <th id="optionSelectedTh">Option Selected</th>
-                            <th id="additionalNotesTh">Additional Notes</th>
-                            <th id="allergiesTh">Allergies</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
+                <div className="orderHistoryCard">
+                   
                         {order.map(order => (
-                        <tr >
-                            <td id="menuDateTd">{formatDate(order.menu_date)}</td>
-                            <td id="responseDateTd">{formatDate(order.creation_date)}</td>
-                            <td id="menuTitleTd">{order.menu_title}</td>
-                            <td id="menuDescriptionTd">{order.menu_description}</td>
-                            <td id="menuDrinkTd">{order.menu_drink}</td>
-                            <td id="optionSelectedTd">{order.menu_option}</td>
-                            <td id="additionalNotesTd">{order.menu_note}</td>
-                            <td id="allergiesTd">{order.menu_allergy}</td>
-                        </tr>
+                        <div className="orderHistoryCardIndividual">
+                            <ul>
+                            <div className="upperContainer">
+                            <li id="menuDateTd"><strong>Menu Date:</strong> {formatDate(order.menu_date)}</li>
+                            <li id="responseDateTd"><strong>Response Date: </strong>{formatDate(order.creation_date)}</li>
+                            <li id="optionSelectedTd"><strong>Option: </strong>{order.menu_option}</li>
+                            </div>
+
+                            <div className="lowerContainer">
+                            <li id="menuTitleTd">{order.menu_title}</li>
+                            <li id="menuDescriptionTd">{order.menu_description}</li>
+                            <li id="menuDrinkTd">{order.menu_drink}</li>
+                            <li id="additionalNotesTd"><strong>Notes: </strong>{order.menu_note}</li>
+                            <li id="allergiesTd"><strong>Allergies: </strong>{order.menu_allergy}</li>
+                            </div>
+                            </ul>
+                        </div>
                         ))}
-                    </tbody>
-                    </table>
+                    </div>
                 </div>
                 
                 
-                
-        </div>
+              
     );
 }
 

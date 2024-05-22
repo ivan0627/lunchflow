@@ -20,7 +20,7 @@ const Navbar = ({setAuth, isAdmin }) => {
         <div className="navbar">
             <a className="logo"  href="/dashboard">
                 <img src={logo} alt="logo" href="/dashboard"/>
-                <Link to="/dashboard">Home </ Link>
+                <Link to="/dashboard"> </ Link>
             </a>
             <a href="/history">Order History</a>
             

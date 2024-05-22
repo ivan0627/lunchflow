@@ -100,3 +100,7 @@ h2{
   border: 0.15em solid rgb(0, 0, 0);
   border-radius: 50%;
 }
+
+#menuDescriptionP{
+   white-space: pre-line;
+}
