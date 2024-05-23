@@ -23,7 +23,7 @@ function App() {
   
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setIsLoading] = useState(true); // New state for loading indicator
 
   const setAuth = boolean => {
@@ -44,6 +44,26 @@ function App() {
       const parseRes = await response.json();
       setIsAuthenticated(parseRes === true);
 
+      ///admin
+
+      const admin = await fetch(URLS.SERVER+"/auth/admin", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "token": localStorage.token
+        },
+        body: JSON.stringify({ email: localStorage.email }),
+      });
+
+      const result = await admin.json();
+      console.log("result.message " + result.message);
+      // Check if the response contains a message indicating the user is not an admin
+      if (result.message === "You are not an admin") {
+        setAdmin(false);
+      } else {
+        setAdmin(true);
+      }
+
     } catch (err) {
       console.error(err.message);
     } finally {
@@ -51,7 +71,7 @@ function App() {
     }
   }
 
-  
+  /*
   async function isAdministrator() {
     try{ //check if user is admin
       const admin = await fetch(URLS.SERVER+"/auth/admin", {
@@ -77,17 +97,18 @@ function App() {
       setIsLoading(false); // Set loading state to false regardless of success or failure
     }
   }
-
+*/
 
   useEffect(() => {
     isAuth();
   }, []);
 
-  useEffect(() => {
+ /* useEffect(() => {
    isAdministrator();
   }
   , []);
-  
+  */
+ 
 
   if (isLoading) {
     // Render a loading indicator while waiting for authentication status
