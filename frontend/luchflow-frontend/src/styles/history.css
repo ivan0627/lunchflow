@@ -69,22 +69,7 @@ ul{
 .lowerContainer{
     min-width: 100%;
 }
-#exportExcel{
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 15px;
-    margin: 10px 0;
-    cursor: pointer;
-    border-radius: 2px;
-}
 
-#exportExcel:hover{
-    background-color: #45a049;
-}
 
 @media screen and (max-width: 1000px){
     #responseDateTh, #menuDrinkTh, #allergiesTh, #menuTitleTh,

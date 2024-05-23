@@ -62,7 +62,7 @@ function App() {
         setAdmin(false);
       } else {
         setAdmin(true);
-      }
+      } 
 
     } catch (err) {
       console.error(err.message);

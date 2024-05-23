@@ -1,0 +1,49 @@
+
+.tableResponses{
+    min-width: 90vw;
+    margin: 2em 5em 2em 5em;
+    overflow-x: auto;
+    border: lightgrey 1px solid;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}	
+.tableResponses th{
+    
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 15px;
+    
+
+}
+.tableResponses td{
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 15px;
+    border: lightgrey 1px solid;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+}
+#lastTd{
+    border-right: none;
+}
+
+
+#exportExcel{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-left: 80%;
+}
+
+#exportExcel:hover{
+    background-color: #45a049;
+}

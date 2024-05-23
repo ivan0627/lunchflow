@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { DownloadTableExcel } from 'react-export-table-to-excel';
 import URLS from "../config";
 
+
 import { ToastContainer, toast } from 'react-toastify';
-import '../styles/history.css';
+import '../styles/responsesReport.css';
 
 
 const ResponsesReport = ({ setAuth }) => {
@@ -52,7 +53,7 @@ const ResponsesReport = ({ setAuth }) => {
         <div className="tableContainer">
             <h1>Responses Report</h1>
             
-            <table ref={tableRef}>
+            <table className= "tableResponses" ref={tableRef}>
                 <thead>
                     <tr>
                         <th>Menu Date</th>
@@ -78,7 +79,7 @@ const ResponsesReport = ({ setAuth }) => {
                             <td>{formatDate(response.creation_date)}</td>                          
                             <td>{response.menu_option}</td>
                             <td>{response.menu_note}</td>
-                            <td>{response.menu_allergy}</td>
+                            <td id="lastTd">{response.menu_allergy}</td>
                         </tr>
                     ))}
                 </tbody>
