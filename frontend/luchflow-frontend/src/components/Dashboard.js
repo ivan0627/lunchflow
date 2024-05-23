@@ -165,7 +165,7 @@ const Dashboard = ({ setAuth }) => {
                         <br></br>
                         <p id="menuDescriptionP">{menu.menu_description}</p>
                         <br></br>
-                        <p><strong>Bebida</strong>{menu.menu_drink}</p>
+                        <p><strong>Bebida: </strong>{menu.menu_drink}</p>
                         <br></br>
                         {Array.from({ length: 10 }, (_, index) => index + 1).map(optionIndex => {
                             const optionKey = `option_${optionIndex}`;

@@ -143,6 +143,28 @@ const saveMenu = async (e) => {
       console.log(menu);
       toast.success("Menu created successfully");
       clearMenuDays();
+      
+
+      async function getMenuHistory() {
+        try {
+          const response = await fetch(URLS.SERVER+"/menu-history/", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              token: localStorage.token,
+              
+            },
+          });
+          const parseRes = await response.json();
+          setOrderHistory(parseRes);
+          
+        } catch (err) {
+          console.error(err.message);
+        }
+      }
+      getMenuHistory();
+
+
     }
   } catch (err) {
     console.error(err.message);
