@@ -39,8 +39,10 @@ const History = ({ setAuth }) => {
         return date.toLocaleDateString('es-ES', options);
     };
 
-    const deleteOrder = async (id) => {
-        try {
+    const deleteOrder =  (id) => {
+        
+        return async () => {
+            try {
             await fetch(URLS.SERVER+"/order-history/" + id, {
                 method: "DELETE",
                 headers: {
@@ -51,6 +53,7 @@ const History = ({ setAuth }) => {
         } catch (err) {
             console.error(err.message);
         }
+        };
     };
 
 
@@ -78,7 +81,7 @@ const History = ({ setAuth }) => {
                             <li id="allergiesTd"><strong>Allergies: </strong>{order.menu_allergy}</li>
                             </div>
                             </ul>
-                            <button id="buttonDeleteHistory" onClick={deleteOrder(order_id)}>Delete</button>
+                            <button id="buttonDeleteHistory" onClick={deleteOrder(order.response_id)}>Delete</button>
                         </div>
                         ))}
                     </div>
