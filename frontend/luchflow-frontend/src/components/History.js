@@ -2,6 +2,7 @@ import React, {  useState, useEffect } from "react";
 import '../styles/history.css';
 
 import URLS from "../config";
+import { toast } from "react-toastify";
 
 const History = ({ setAuth }) => {
 
@@ -53,7 +54,31 @@ const History = ({ setAuth }) => {
                 }
             });
             const parseRes = await response.json();
-
+            if (parseRes === "Order was deleted"){
+                toast.success("Order was deleted");
+                async function fetchUserData() {
+                    try {
+                        const response = await 
+                        fetch(URLS.SERVER+"/order-history/", {
+                            method: "GET",
+        
+                            headers: {"Content-Type": "application/json",
+                            "token": localStorage.token,
+                            "email": localStorage.email}
+                            
+                        });
+                        const parseRes = await response.json();
+                        setOrder(parseRes);
+                        console.log(parseRes)
+            
+                    } catch (err) {
+                        console.error(err.message);
+                    }
+                }
+                fetchUserData();
+            }else{
+                toast.error(parseRes);
+            }
             setOrder(order.filter(order => order.order_id !== id));
         } catch (err) {
             console.error(err.message);
@@ -66,7 +91,7 @@ const History = ({ setAuth }) => {
         <div >
             <h1>Order History</h1>
             
-                {order.length === 0 && <p>No orders found</p>}
+                {order.length === 0 && <p id="pOrderHistory">No orders found</p>}
                 <div className="orderHistoryCard">
                    
                         {order.map(order => (
