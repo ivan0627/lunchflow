@@ -43,14 +43,17 @@ const History = ({ setAuth }) => {
         
         return async () => {
             try {
+            const response = 
+
             await fetch(URLS.SERVER+"/order-history/" + id, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
-
                     token: localStorage.token
                 }
             });
+            const parseRes = await response.json();
+
             setOrder(order.filter(order => order.order_id !== id));
         } catch (err) {
             console.error(err.message);
