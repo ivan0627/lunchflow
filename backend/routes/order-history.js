@@ -14,4 +14,17 @@ router.get("/", authorization, async (req, res) => {
   }
 });
 
+// delete an order
+router.delete("/:id", authorization, async (req, res) => {
+  try {
+    const id = req.params.order_id;
+    const deleteOrder = await pool.query("DELETE FROM responses WHERE response_id = $1", [id]);
+    res.json("Order was deleted");
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 module.exports = router;

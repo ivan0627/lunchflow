@@ -36,9 +36,10 @@
     overflow-x: auto;
     display: flex;
     flex-wrap: wrap;
+    
 }
 .orderHistoryCardIndividual{
-    min-width: 100%;
+   min-width: 100%;
     background-color: #f2f2f2;
     color: #333;
     font-size: 17px;
@@ -55,6 +56,7 @@
 }
 ul{
     list-style-type: none;
+    min-width: 100%;
 
 }
 .orderHistoryCard li{
@@ -63,11 +65,25 @@ ul{
 
 .upperContainer{
     display: flex ;
-    min-width: 100%;
+    min-width:100%;
     justify-content: space-between;
 }
 .lowerContainer{
     min-width: 100%;
+}
+#buttonDeleteHistory{
+    background-color: #f44336;
+    color: white;
+    padding: 14px 20px;
+    margin: auto;
+    margin-top: 2em;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    border-radius: 2px;
+    font-size: 17px;
+    font-weight: bold;
+
 }
 
 

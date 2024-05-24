@@ -22,6 +22,7 @@ const History = ({ setAuth }) => {
                 });
                 const parseRes = await response.json();
                 setOrder(parseRes);
+                console.log(parseRes)
     
             } catch (err) {
                 console.error(err.message);
@@ -38,6 +39,20 @@ const History = ({ setAuth }) => {
         return date.toLocaleDateString('es-ES', options);
     };
 
+    const deleteOrder = async (id) => {
+        try {
+            await fetch(URLS.SERVER+"/order-history/" + id, {
+                method: "DELETE",
+                headers: {
+                    token: localStorage.token
+                }
+            });
+            setOrder(order.filter(order => order.order_id !== id));
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
+
 
     return (
         <div >
@@ -52,17 +67,18 @@ const History = ({ setAuth }) => {
                             <div className="upperContainer">
                             <li id="menuDateTd"><strong>Menu Date:</strong> {formatDate(order.menu_date)}</li>
                             <li id="responseDateTd"><strong>Response Date: </strong>{formatDate(order.creation_date)}</li>
-                            <li id="optionSelectedTd"><strong>Option: </strong>{order.menu_option}</li>
+                            <li id="optionSelectedTd"><strong>Option Selected: </strong>{order.menu_option}</li>
                             </div>
 
                             <div className="lowerContainer">
-                            <li id="menuTitleTd">{order.menu_title}</li>
-                            <li id="menuDescriptionTd">{order.menu_description}</li>
-                            <li id="menuDrinkTd">{order.menu_drink}</li>
+                            <li id="menuTitleTd"><strong>Menu Title:</strong>{order.menu_title}</li>
+                            <li id="menuDescriptionTd"><strong>Description: </strong>{order.menu_description}</li>
+                            <li id="menuDrinkTd"><strong>Menu Drink: </strong>{order.menu_drink}</li>
                             <li id="additionalNotesTd"><strong>Notes: </strong>{order.menu_note}</li>
                             <li id="allergiesTd"><strong>Allergies: </strong>{order.menu_allergy}</li>
                             </div>
                             </ul>
+                            <button id="buttonDeleteHistory" onClick={deleteOrder(order_id)}>Delete</button>
                         </div>
                         ))}
                     </div>
