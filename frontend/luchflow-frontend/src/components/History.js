@@ -46,6 +46,8 @@ const History = ({ setAuth }) => {
             await fetch(URLS.SERVER+"/order-history/" + id, {
                 method: "DELETE",
                 headers: {
+                    "Content-Type": "application/json",
+
                     token: localStorage.token
                 }
             });
