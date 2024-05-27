@@ -12,6 +12,8 @@ import "../styles/login.css"
 
 const Login = ({setAuth, setAdmin}) => {
 
+    setAdmin(false);
+
     const [inputs, setInputs] = useState ({
         email: "",
         password: ""
