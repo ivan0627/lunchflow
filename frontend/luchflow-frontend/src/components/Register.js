@@ -1,8 +1,9 @@
 import React, {Fragment, useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/register.css";
 import URLS from "../config";
 import logo from '../logo.png'
+
 
 //toastify
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,6 +17,8 @@ const Register = ({ setAuth }) => {
         name: "",
         repeatPassword: "",
     })
+    const navigate = useNavigate();
+
 
     const { email, password, name, repeatPassword } = inputs;
 
@@ -43,8 +46,9 @@ const Register = ({ setAuth }) => {
         const parseRes = await response.json()
     if (parseRes.token) {
         localStorage.setItem('token', parseRes.token)
-        setAuth(true)
+        setAuth(false)
         toast.success("Registered Successfully!")
+        navigate("/login")
     }
     else {
         setAuth(false)
