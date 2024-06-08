@@ -23,7 +23,7 @@ router.post("/", authorization, async (req, res) => {
         const filteredResponses = await pool.query(`
             SELECT *
             FROM responses
-            WHERE creation_date BETWEEN $1 AND $2
+            WHERE response_date >= $1 AND response_date < $2::date + interval '1 day'
         `, [date1, date2]);
         res.json(filteredResponses.rows);
     } catch (err) {
@@ -31,5 +31,4 @@ router.post("/", authorization, async (req, res) => {
         res.status(500).send("Server Error");
     }
 });
-
 module.exports = router;
