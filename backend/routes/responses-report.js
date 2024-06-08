@@ -16,4 +16,20 @@ router.get("/", authorization, async (req, res) => {
     }
 )
 
+// Get filtered responses based on date range
+router.post("/", authorization, async (req, res) => {
+    const { date1, date2 } = req.body;
+    try {
+        const filteredResponses = await pool.query(`
+            SELECT *
+            FROM responses
+            WHERE creation_date BETWEEN $1 AND $2
+        `, [date1, date2]);
+        res.json(filteredResponses.rows);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+});
+
 module.exports = router;
