@@ -1,4 +1,32 @@
 
+.dateFilter{
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+
+}
+.dateFilter input{
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: lightgrey 1px solid;
+    margin: 0 10px;
+}
+.dateFilter button{
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: lightgrey 1px solid;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+}
+.dateFilter button:hover{
+    background-color: #45a049;
+}
+
+
+
 .tableResponses{
     min-width: 90vw;
     margin: 2em 5em 2em 5em;

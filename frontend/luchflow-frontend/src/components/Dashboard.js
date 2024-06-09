@@ -13,8 +13,8 @@ const Dashboard = ({ setAuth }) => {
     const formatDate = (dateString) => {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const date = new Date(dateString);
-        const utcOffset = -5 * 60;
-        date.setMinutes(date.getMinutes() - utcOffset);
+        
+        date.setMinutes(date.getMinutes());
         return date.toLocaleDateString('es-ES', options).toUpperCase();
     };
 

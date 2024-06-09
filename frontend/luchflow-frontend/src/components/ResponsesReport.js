@@ -32,8 +32,8 @@ const ResponsesReport = ({ setAuth }) => {
     const formatDate = (dateString) => {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const date = new Date(dateString);
-        const utcOffset = -5 * 60; // UTC-5 offset
-        date.setMinutes(date.getMinutes() - utcOffset);
+        
+        date.setMinutes(date.getMinutes());
         return date.toLocaleDateString('es-ES', options).toUpperCase();
     };
 
@@ -44,9 +44,14 @@ const ResponsesReport = ({ setAuth }) => {
             const dateFilter2 = document.getElementById("dateFilter2");
             const date1 = dateFilter.value;
             const date2 = dateFilter2.value;
+            
             if (date1 === "" || date2 === "") {
                 toast.error("Please select two dates to filter");
-            } else {
+            } 
+            else if (date1 > date2) {
+                toast.error("Invalid date range");
+            }
+            else {
                 async function getFilteredResponses() {
                     try {
                         const response = await fetch(URLS.SERVER+"/responses-report", {

@@ -6,8 +6,11 @@ const authorization = require("../middleware/authorization");
 
 router.get("/", authorization, async (req, res) => {
     try {
+        /*
         const menus = await pool.query("SELECT * FROM menus WHERE menu_date >= date_trunc('week',current_date + interval '1 week') + interval '1 day'AND menu_date < date_trunc('week', current_date + interval '1 week') + interval '5 day'; ");
         res.json(menus.rows);
+        */
+       const menus = await pool.query("SELECT * FROM menus WHERE menu_date >= date_trunc('week', current_date) + interval '4 day' AND menu_date < date_trunc('week', current_date + interval '1 week') + interval '8 day'; ");
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
