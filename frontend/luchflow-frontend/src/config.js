@@ -1,7 +1,7 @@
 
 
 const URLS = {
-     SERVER: 'http://localhost:5000', // URL del servidor 
+     SERVER: 'https://lunchflow.onrender.com', // URL del servidor 
 };
 
 export default URLS;

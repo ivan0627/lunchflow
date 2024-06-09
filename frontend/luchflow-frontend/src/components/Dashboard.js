@@ -17,6 +17,7 @@ const Dashboard = ({ setAuth }) => {
         date.setMinutes(date.getMinutes());
         return date.toLocaleDateString('es-ES', options).toUpperCase();
     };
+    
 
     useEffect(() => {
         async function fetchUserData() {
