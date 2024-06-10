@@ -35,8 +35,27 @@ const Dashboard = ({ setAuth }) => {
         fetchUserData();
     }, []);
 
+    //funcion de javascript para saber si hoy es lunes o martes o cualquier dia de la semana
+
+    const today = new Date();
+    let day = today.getDay();
+    const isMonday = day === 1;
+    const isTuesday = day === 2;
+    const isWednesday = day === 3;
+    const isThursday = day === 4;
+    const isFriday = day === 5;
+    const isSaturday = day === 6;
+    const isSunday = day === 0;
+
+
+
+
+
     useEffect(() => {
         async function fetchMenus() {
+
+            console.log(day)
+            if(isMonday){
             try {
                 const response = await fetch(URLS.SERVER+"/menus/", {
                     method: "GET",
@@ -55,6 +74,29 @@ const Dashboard = ({ setAuth }) => {
                 console.error(err.message);
             }
         }
+
+        if(isTuesday || isWednesday || isThursday || isFriday || isSaturday || isSunday){
+            try {
+                const response = await fetch(URLS.SERVER+"/menus/nextweek", {
+                    method: "GET",
+                    headers: { token: localStorage.token }
+                });
+                const parseRes = await response.json();
+                setMenus(parseRes);
+                
+                // Inicializar menuSelections con las opciones por defecto para cada menú
+                const initialSelections = {};
+                parseRes.forEach(menu => {
+                    initialSelections[`menu_${menu.menu_id}`] = { option: null, note: "", allergy: ""};
+                });
+                setMenuSelections(initialSelections);
+            } catch (err) {
+                console.error(err.message);
+            }
+        }
+        
+        }
+        
         fetchMenus();
     }, []);
 
